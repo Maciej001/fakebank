@@ -24,7 +24,7 @@ Header = React.createClass({
     return (  
       <nav id="menu">
         <a className="logo" href="/">
-          LOGO
+          FAKE BANK
         </a>
         { this.data.currentUser ? 
           <a className="sign-out" href="#" onClick={ this.handleSignOut }>Sign out</a>

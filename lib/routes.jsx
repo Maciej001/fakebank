@@ -16,6 +16,20 @@ FlowRouter.route('/',{
   }
 });
 
+FlowRouter.route('/main',{
+  name: 'Main', 
+  action(params) {
+
+    if (Meteor.userId()) {
+      ReactLayout.render(MainLayout, { 
+        content:  <Main />
+      });
+    } else {
+      FlowRouter.go('/')
+    }
+  }
+});
+
 FlowRouter.route('/signup',{
   name: 'Signup', 
   action(params) {

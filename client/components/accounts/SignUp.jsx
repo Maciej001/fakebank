@@ -26,7 +26,7 @@ SignUp = React.createClass({
       } else {
         
         if ( this.state.error ) this.setState({ error: false});
-        FlowRouter.go('/');
+        FlowRouter.go('/main');
       }
     });
 

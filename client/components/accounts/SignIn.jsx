@@ -31,7 +31,7 @@ SignIn = React.createClass({
           this.setState({ error: "" + error.reason });
         } else {
           if (this.state.error) { this.setState({ error: false }); }
-          FlowRouter.go('/');
+          FlowRouter.go('/main');
         }
       });
       

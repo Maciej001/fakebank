@@ -17,9 +17,9 @@ Home = React.createClass({
     return (
       <div className="home-page">
         <div className="container">
-          <h1>Welcome</h1>
+          <h1>Welcome to FAKE BANK</h1>
           <p>
-          Main Header
+          Open fake account and generate fake transactions
           </p>
           { this.data.currentUser ? 
             ""
