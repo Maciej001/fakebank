@@ -37,7 +37,7 @@ SignUp = React.createClass({
       <div className="container">
         <div id="signin">
 
-            <h4> Signup with Email</h4> 
+            <h4> Sign up with Email</h4> 
             { this.state.error ?
               <h4 className="error-msg">{ this.state.error }</h4>
               : ""
@@ -50,7 +50,7 @@ SignUp = React.createClass({
                 <input type="password" ref="password" className="form-control" id="pwd" placeholder="Your Password"/>
               </div>
 
-              <button type="submit" className="btn btn-submit">Create account</button>
+              <button type="submit" className="btn btn-submit">Create fake account</button>
               <button className="btn btn-cancel" onClick={ this.cancel }>Cancel</button>
             </form>
 

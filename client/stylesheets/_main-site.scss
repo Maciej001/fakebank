@@ -2,6 +2,17 @@
   padding: 20px 0;
 }
 
-#new-account-form {
-  padding: 60px 0 20px 0; 
+#new-account-form, #new-transaction-form {
+  padding: 20px 0 20px 0; 
+}
+
+#new-transaction-form select {
+  margin-bottom: 10px;
+}
+
+table {
+  border-bottom: 1px solid $light-grey;
+}
+table thead {
+  background: $light-grey;
 }

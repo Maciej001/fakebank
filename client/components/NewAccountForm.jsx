@@ -10,7 +10,7 @@ NewAccountForm = React.createClass({
 
     return {
       bankAccountsLoaded:   bankAccountsSub.ready(),
-      banksAccounts:        BankAccounts.find().fetch()
+      bankAccounts:         BankAccounts.find().fetch()
     }
   },
 
@@ -23,11 +23,11 @@ NewAccountForm = React.createClass({
   createAccount(e) {
     e.preventDefault(); 
 
-    let accountName = ReactDOM.findDOMNode( this.refs.accountName ).value.trim();
+    let name = ReactDOM.findDOMNode( this.refs.name ).value.trim();
     let error = "";
 
     // empty account name
-    if (accountName === "") {
+    if ( name === "" ) {
       error += "Please name Your New Account";
     }
 
@@ -36,11 +36,11 @@ NewAccountForm = React.createClass({
     if ( error === "" ) {
       this.setState({ error: false });
 
-      if ( BankAccounts.find({ userId: Meteor.userId(), accountName: accountName }).count() > 0) {
+      if ( BankAccounts.find({ userId: Meteor.userId(), name: name }).count() > 0) {
         this.setState({ error: "Account with the same name already exists." });
       } else {
 
-        Meteor.call( "createNewAccount", accountName, ( err ) => {
+        Meteor.call( "createNewAccount", name, ( err ) => {
           if (err ) {
             console.log("Error creating new account.");
           } else {
@@ -65,25 +65,31 @@ NewAccountForm = React.createClass({
 
   render() {
 
-    return (      
+    return (     
+
       <div>  
-        <h3 className="header-grey">New Account</h3>   
-        
-        <form id="new-card-form" role="form" onSubmit={ this.createAccount }>
-          
-          { this.state.error ?
-            <h4 className="error-msg">{ this.state.error }</h4>
-            : ""
-          }
+        { this.data.bankAccountsLoaded ? 
 
-          <div className="form-group">
-            <input type="text" ref="accountName" className="form-control" id="account-name" placeholder="Chose account name"/>
-          </div>
+          <form id="new-account-form" role="form" onSubmit={ this.createAccount }>
+            
+            { this.state.error ?
+              <h4 className="error-msg">{ this.state.error }</h4>
+              : ""
+            }
 
-          <button id="card-save" type="submit" className="btn btn-submit">Save</button>
-          <button id="card-cancel" className="btn btn-cancel" onClick={ this.cancel }>Cancel</button>
-        </form>
+            <div className="form-group">
+              <input type="text" ref="name" className="form-control" placeholder="Chose account name"/>
+            </div>
+
+            <button id="account-save" type="submit" className="btn btn-submit">Save</button>
+            <button id="account-cancel" className="btn btn-cancel" onClick={ this.cancel }>Cancel</button>
+          </form>
+
+        : "" }
+
       </div>
+
+      
 
     )
   }

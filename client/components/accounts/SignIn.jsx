@@ -45,7 +45,7 @@ SignIn = React.createClass({
       <div className="container">
         <div id="signin">
 
-            <h4> Signin to your Mondo Loyal account</h4>
+            <h4> Sign in to your fake account</h4>
             { this.state.error ?
               <h4 className="error-msg">{ this.state.error }</h4>
               : ""
@@ -58,7 +58,7 @@ SignIn = React.createClass({
                 <input type="password" ref="password"  className="form-control" id="pwd" placeholder="Your Password"/>
               </div>
 
-              <button type="submit" className="btn btn-submit">Signin</button>
+              <button type="submit" className="btn btn-submit">Sign in</button>
               <button className="btn btn-cancel" onClick={ this.cancel }>Cancel</button>
             </form>
 

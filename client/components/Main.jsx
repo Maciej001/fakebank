@@ -2,38 +2,40 @@ Main = React.createClass({
   
   getInitialState() {
     return {
-      newAccount: false
+      newAccount:     false,
+      newTransaction: false
     }
-  },
-
-  closeForm() {
-    this.setState({ newAccount: false });
   },
 
   newAccount() {
     this.setState({ newAccount: true });
+    this.setState({ newTransaction: false });
+  },
+
+  closeNewAccountForm() {
+    this.setState({ newAccount: false });
+  },
+
+  newTransaction() {
+    this.setState({ newTransaction: true });
+    this.setState({ newAccount: false });
+  },
+
+  closeNewTransaction() {
+    this.setState({ newTransaction: false });
   },
 
   render() {
     return (
       <div className="container">
-        
-        { this.state.newAccount ?
 
-          <div id="new-account-form" className="row">
-            <div className="col-xs-12 col-md-6 col-md-offset-3">
-              <NewAccountForm closeForm={ this.closeForm } />
-            </div>
+        <div id="new-account" className="row">
+          <div className="col-xs-12">
+            <button className="btn btn-primary btn-blue" onClick={ this.newAccount }>Create New Account</button>
+            { this.state.newAccount ?
+              <NewAccountForm closeForm={ this.closeNewAccountForm } /> : "" }
           </div>
-                
-          : 
-
-          <div id="new-account" className="row">
-            <div className="col-xs-12">
-              <button className="btn btn-primary btn-blue" onClick={ this.newAccount }>Create New Account</button>
-            </div>
-          </div>
-        }
+        </div>
 
         <div id="accounts-list" className="row">
           <div className="col-xs-12">
@@ -43,7 +45,9 @@ Main = React.createClass({
 
         <div id="new-transaction" className="row">
           <div className="col-xs-12">
-            <NewTransactionForm />
+            <button className="btn btn-primary btn-blue" onClick={ this.newTransaction }>New Transaction</button>
+            { this.state.newTransaction ? 
+              <NewTransactionForm  closeForm={ this.closeNewTransaction } /> : "" }
           </div>
         </div>
         
